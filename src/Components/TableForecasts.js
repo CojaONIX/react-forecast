@@ -1,8 +1,5 @@
-import {useState} from "react";
 
-
-function TableForecasts(props) {
-
+function TableForecasts({forecasts}) {
 
     return (
         <>
@@ -17,7 +14,7 @@ function TableForecasts(props) {
                 </thead>
                 <tbody>
                 {
-                    props.forecasts.map(function(forecast) {
+                    forecasts.map(function(forecast) {
                         return  <tr>
                                     <td>{forecast.city}</td>
                                     <td>{forecast.country}</td>
