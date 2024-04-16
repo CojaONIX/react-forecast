@@ -1,11 +1,8 @@
 import {useState} from "react";
 
 
-function TableForecasts() {
-    let [forecasts, setForecasts] = useState([
-        {city: 'Aleksinac', country: 'Srbija', temperature: 20},
-        {city: 'Beograd', country: 'Srbija', temperature: 22}
-    ]);
+function TableForecasts(props) {
+
 
     return (
         <>
@@ -20,7 +17,7 @@ function TableForecasts() {
                 </thead>
                 <tbody>
                 {
-                    forecasts.map(function(forecast) {
+                    props.forecasts.map(function(forecast) {
                         return  <tr>
                                     <td>{forecast.city}</td>
                                     <td>{forecast.country}</td>

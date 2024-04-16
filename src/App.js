@@ -6,11 +6,16 @@ import {useState} from "react";
 import TableForecasts from "./Components/TableForecasts";
 
 function App() {
-    let [forecasts, setForecasts] = useState([{city: 'Aleksinac', country: 'Srbija', temperature: 20}]);
+
+    let [forecasts, setForecasts] = useState([
+        {city: 'Aleksinac', country: 'Srbija', temperature: 20},
+        {city: 'Beograd', country: 'Srbija', temperature: 22},
+        {city: 'London', country: 'England', temperature: 15}
+    ]);
 
     return (
         <div className="container">
-            <TableForecasts/>
+            <TableForecasts forecasts={forecasts}/>
             <hr/>
             <div className="col-md-4">
                 <FormAddForecast/>
