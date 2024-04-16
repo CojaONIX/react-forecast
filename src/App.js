@@ -1,14 +1,25 @@
 
 import "bootstrap/dist/css/bootstrap.min.css"
 import './App.css';
+import FormAddForecast from "./Components/FormAddForecast";
+import {useState} from "react";
+import TableForecasts from "./Components/TableForecasts";
 
 function App() {
-  return (
-    <div className="container">
-      <button className="btn btn-primary">Test</button>
+    let [forecasts, setForecasts] = useState([{city: 'Aleksinac', country: 'Srbija', temperature: 20}]);
 
-    </div>
-  );
+    return (
+        <div className="container">
+            <TableForecasts/>
+            <hr/>
+            <div className="col-md-4">
+                <FormAddForecast/>
+            </div>
+
+            <hr/>
+
+        </div>
+    );
 }
 
 export default App;
