@@ -49,7 +49,7 @@ function TableForecasts() {
             setForecasts(updatedForecast);
         }
 
-        setNewForecast({city: '', country: '', temperature: ''});
+        setNewForecast({city: '', country: '', temperature: null});
 
     }
 
@@ -124,7 +124,7 @@ function TableForecasts() {
                     />
                 </div>
 
-                <button onClick={() => setNewForecast({city: '', country: '', temperature: ''})}
+                <button onClick={() => setNewForecast({city: '', country: '', temperature: null})}
                         className="btn btn-outline-primary me-3">C
                 </button>
                 <button onClick={saveForecast} className="btn btn-primary">Save Forecast</button>
