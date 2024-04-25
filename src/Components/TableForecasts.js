@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-function TableForecasts() {
+const TableForecasts = () => {
     let [forecasts, setForecasts] = useState([
         {city: 'Aleksinac', country: 'Srbija', temperature: 22},
         {city: 'Beograd', country: 'Srbija', temperature: 22},
@@ -10,21 +10,21 @@ function TableForecasts() {
     let [newForecast, setNewForecast] = useState({city: '', country: '', temperature: null});
     let [cotyMessage, setCityMessage] = useState('');
 
-    function handleCityInput(e) {
+    const handleCityInput = (e) => {
         setNewForecast({...newForecast, city: e.target.value});
         setCityMessage( e.target.value === '' ? ' - Naziv grada je obavezan!' : '');
     }
 
-    function deleteForecast(indexToRemove) {
+    const deleteForecast = (indexToRemove) => {
         setForecasts(forecasts.filter((_, index) => index !== indexToRemove));
     }
 
-    function editForecast(indexToEdit) {
+    const editForecast = (indexToEdit) => {
         setNewForecast(forecasts[indexToEdit]);
         setCityMessage('');
     }
 
-    function saveForecast() {
+    const saveForecast = () => {
 
         if(newForecast.city === '') {
             setCityMessage(' - Naziv grada je obavezan!');

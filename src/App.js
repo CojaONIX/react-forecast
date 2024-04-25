@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import './App.css';
 import TableForecasts from "./Components/TableForecasts";
 
-function App() {
+const App = () => {
 
     return (
         <div className="container">
