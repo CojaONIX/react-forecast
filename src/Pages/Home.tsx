@@ -1,9 +1,10 @@
 
+import React from "react";
 import {useForm} from "react-hook-form";
 
-const Home = () => {
+const Home = (): JSX.Element => {
 
-    const validCities = ['Beograd', 'Subotica', 'Novi Sad', 'Aleksinac', 'Smederevo'];
+    const validCities: string[] = ['Beograd', 'Subotica', 'Novi Sad', 'Aleksinac', 'Smederevo'];
 
     const {
         register,
@@ -11,11 +12,11 @@ const Home = () => {
         formState: {errors},
     } = useForm();
 
-    const onFormSubmit = (data) => {
+    const onFormSubmit = (data: object): void => {
         console.log(data);
     };
 
-    const isValidCityName = (city) => validCities.includes(city);
+    const isValidCityName = (city: string) => validCities.includes(city);
 
 
     return (
