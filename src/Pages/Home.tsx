@@ -4,6 +4,21 @@ import {useForm} from "react-hook-form";
 
 const Home = (): JSX.Element => {
 
+    const getAddress = (location: GeolocationPosition) => {
+        console.log(location.coords);
+    }
+
+    const addressForbidden = () => {
+        console.log("addressForbidden");
+    }
+
+    if(navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(getAddress, addressForbidden)
+    } else {
+        console.log("not supported geolocation");
+    }
+
+
     const validCities: string[] = ['Beograd', 'Subotica', 'Novi Sad', 'Aleksinac', 'Smederevo'];
 
     const {
