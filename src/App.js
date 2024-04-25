@@ -1,14 +1,20 @@
 
 import "bootstrap/dist/css/bootstrap.min.css"
 import './App.css';
-import TableForecasts from "./Components/TableForecasts";
+
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import Home from "./Pages/Home";
+import Admin from "./Pages/Admin";
 
 const App = () => {
 
     return (
-        <div className="container">
-            <TableForecasts />
-        </div>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/admin" element={<Admin />} />
+            </Routes>
+        </BrowserRouter>
     );
 }
 

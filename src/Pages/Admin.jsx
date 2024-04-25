@@ -1,14 +1,14 @@
 import {useState} from "react";
 
-const TableForecasts = () => {
+const Admin = () => {
     let [forecasts, setForecasts] = useState([
         {city: 'Aleksinac', country: 'Srbija', temperature: 22},
         {city: 'Beograd', country: 'Srbija', temperature: 22},
         {city: 'London', country: 'England', temperature: 15}
     ]);
 
-    let [newForecast, setNewForecast] = useState({city: '', country: '', temperature: null});
-    let [cotyMessage, setCityMessage] = useState('');
+    let [newForecast, setNewForecast] = useState({city: '', country: '', temperature: ''});
+    let [cityMessage, setCityMessage] = useState('');
 
     const handleCityInput = (e) => {
         setNewForecast({...newForecast, city: e.target.value});
@@ -49,12 +49,12 @@ const TableForecasts = () => {
             setForecasts(updatedForecast);
         }
 
-        setNewForecast({city: '', country: '', temperature: null});
+        setNewForecast({city: '', country: '', temperature: ''});
 
     }
 
     return (
-        <>
+        <div className="container">
             <h1>Forecast List:</h1>
             <table className="table">
                 <thead>
@@ -90,7 +90,7 @@ const TableForecasts = () => {
 
             <div className="col-md-4">
                 <div className="mb-3">
-                    <label htmlFor="city" className="form-label">City{cotyMessage}</label>
+                    <label htmlFor="city" className="form-label">City{cityMessage}</label>
                     <input onChange={handleCityInput}
                            type="text"
                            className="form-control"
@@ -124,7 +124,7 @@ const TableForecasts = () => {
                     />
                 </div>
 
-                <button onClick={() => setNewForecast({city: '', country: '', temperature: null})}
+                <button onClick={() => setNewForecast({city: '', country: '', temperature: ''})}
                         className="btn btn-outline-primary me-3">C
                 </button>
                 <button onClick={saveForecast} className="btn btn-primary">Save Forecast</button>
@@ -133,8 +133,8 @@ const TableForecasts = () => {
             <hr/>
 
             <p>{JSON.stringify(newForecast)}</p>
-        </>
+        </div>
     )
 }
 
-export default TableForecasts;
+export default Admin;
