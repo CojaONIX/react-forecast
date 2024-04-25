@@ -134,7 +134,7 @@ const Admin = () => {
 
             <p>{JSON.stringify(newForecast)}</p>
         </div>
-    )
+    );
 }
 
 export default Admin;
