@@ -1,14 +1,14 @@
 import {useState} from "react";
 
 const Admin = () => {
-    let [forecasts, setForecasts] = useState([
+    const [forecasts, setForecasts] = useState([
         {city: 'Aleksinac', country: 'Srbija', temperature: 22},
         {city: 'Beograd', country: 'Srbija', temperature: 22},
         {city: 'London', country: 'England', temperature: 15}
     ]);
 
-    let [newForecast, setNewForecast] = useState({city: '', country: '', temperature: ''});
-    let [cityMessage, setCityMessage] = useState('');
+    const [newForecast, setNewForecast] = useState({city: '', country: '', temperature: ''});
+    const [cityMessage, setCityMessage] = useState('');
 
     const handleCityInput = (e) => {
         setNewForecast({...newForecast, city: e.target.value});
