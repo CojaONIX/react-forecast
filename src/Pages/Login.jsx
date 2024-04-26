@@ -13,7 +13,7 @@ export const Login = () => {
 
     const handleSubmit = () => {
         const isLogged = email === 'admin' && password === '123456';
-        if(isLogged)
+        if (isLogged)
             setUserState({'isLogged': isLogged, 'email': email});
     }
 
