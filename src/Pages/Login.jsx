@@ -1,4 +1,6 @@
 import {useState} from "react";
+import {useRecoilValue, useSetRecoilState} from "recoil";
+import {userState} from "../States/userState";
 
 
 export const Login = () => {
@@ -6,8 +8,11 @@ export const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const setUserState = useSetRecoilState(userState);
+    const isLogged = useRecoilValue(userState);
+
     const handleSubmit = () => {
-        const isLogged = email === 'admin' && password === '123456';
+        setUserState({'isLogged': email === 'admin' && password === '123456'});
         console.log(email, password, isLogged);
     }
 
