@@ -13,9 +13,8 @@ export const Login = () => {
 
     const handleSubmit = () => {
         const isLogged = email === 'admin' && password === '123456';
-        console.log(email, password, isLogged);
-        setUserState({'isLogged': isLogged});
-        console.log(userStateData, userStateData.isLogged)
+        if(isLogged)
+            setUserState({'isLogged': isLogged, 'email': email});
     }
 
     return (
@@ -25,7 +24,7 @@ export const Login = () => {
                     <h4>LOGIN</h4>
                 </div>
 
-                <p>{userStateData.isLogged ? 'logged' : 'not logged'}</p>
+                <p>{userStateData.isLogged ? 'logged ' + userStateData.email : 'not logged'}</p>
 
                 <div className="card-body">
                     <form>

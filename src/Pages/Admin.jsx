@@ -1,4 +1,6 @@
 import {useState} from "react";
+import {useRecoilValue} from "recoil";
+import {userState} from "../States/userState";
 
 const Admin = () => {
     const [forecasts, setForecasts] = useState([
@@ -9,6 +11,9 @@ const Admin = () => {
 
     const [newForecast, setNewForecast] = useState({city: '', country: '', temperature: ''});
     const [cityMessage, setCityMessage] = useState('');
+
+    const userStateData = useRecoilValue(userState);
+    console.log(userStateData);
 
     const handleCityInput = (e) => {
         setNewForecast({...newForecast, city: e.target.value});
@@ -56,6 +61,9 @@ const Admin = () => {
     return (
         <div className="container">
             <h1>Forecast List:</h1>
+
+            <p>{userStateData.isLogged ? 'logged ' + userStateData.email : 'not logged'}</p>
+
             <table className="table">
                 <thead>
                 <tr>

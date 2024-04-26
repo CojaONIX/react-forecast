@@ -11,15 +11,15 @@ import {Login} from "./Pages/Login";
 const App = () => {
 
     return (
-        <BrowserRouter>
-            <RecoilRoot>
+        <RecoilRoot>
+            <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/admin" element={<Admin />} />
                 </Routes>
-            </RecoilRoot>
-        </BrowserRouter>
+            </BrowserRouter>
+        </RecoilRoot>
     );
 }
 
