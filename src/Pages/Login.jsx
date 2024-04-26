@@ -1,9 +1,14 @@
+import {useState} from "react";
 
 
 export const Login = () => {
 
-    const handleSubmit = (e) => {
-        console.log('handleSubmit');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleSubmit = () => {
+        const isLogged = email === 'admin' && password === '123456';
+        console.log(email, password, isLogged);
     }
 
     return (
@@ -17,7 +22,8 @@ export const Login = () => {
                     <form>
                         <div className="mb-3">
                             <label htmlFor="email">Email <span className="text-danger">*</span></label>
-                            <input type="text"
+                            <input onInput={e => setEmail(e.currentTarget.value)}
+                                   type="text"
                                    id="email"
                                    className="form-control mt-2"
                                    autoFocus
@@ -26,7 +32,8 @@ export const Login = () => {
 
                         <div className="mb-3">
                             <label htmlFor="password">Password <span className="text-danger">*</span></label>
-                            <input type="text"
+                            <input onInput={e => setPassword(e.currentTarget.value)}
+                                   type="text"
                                    id="password"
                                    className="form-control mt-2"
                             />
