@@ -9,11 +9,13 @@ export const Login = () => {
     const [password, setPassword] = useState('');
 
     const setUserState = useSetRecoilState(userState);
-    const isLogged = useRecoilValue(userState);
+    const userStateData = useRecoilValue(userState);
 
     const handleSubmit = () => {
-        setUserState({'isLogged': email === 'admin' && password === '123456'});
+        const isLogged = email === 'admin' && password === '123456';
         console.log(email, password, isLogged);
+        setUserState({'isLogged': isLogged});
+        console.log(userStateData, userStateData.isLogged)
     }
 
     return (
@@ -22,6 +24,8 @@ export const Login = () => {
                 <div className="card-header">
                     <h4>LOGIN</h4>
                 </div>
+
+                <p>{userStateData.isLogged ? 'logged' : 'not logged'}</p>
 
                 <div className="card-body">
                     <form>
