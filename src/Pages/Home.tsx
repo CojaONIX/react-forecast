@@ -22,21 +22,19 @@ const Home = (): JSX.Element => {
     }
 
     const getAddress = (location: GeolocationPosition) => {
-        setGeoLatitude(location.coords.latitude.toString());
-        setGeoLongitude(location.coords.longitude.toString());
-    }
-
-    const addressForbidden = () => {
-        console.log("addressForbidden");
+        if(geoLatitude === '' && geoLongitude === '') {
+            setGeoLatitude(location.coords.latitude.toString());
+            setGeoLongitude(location.coords.longitude.toString());
+        }
     }
 
     if(navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(getAddress, addressForbidden)
+        navigator.geolocation.getCurrentPosition(getAddress, () => console.log("addressForbidden"));
     } else {
         console.log("not supported geolocation");
     }
 
-
+    //------------------------------------------------------------------------------------------
     const validCities: string[] = ['Beograd', 'Subotica', 'Novi Sad', 'Aleksinac', 'Smederevo'];
 
     const {
@@ -58,8 +56,8 @@ const Home = (): JSX.Element => {
             <hr/>
             <h4>Latitude: {geoLatitude}</h4>
             <h4>Longitude: {geoLongitude}</h4>
-            {/*<input onChange={(e) => setGeoLatitude(e.currentTarget.value)} />*/}
-            {/*<input onChange={(e) => setGeoLongitude(e.currentTarget.value)} />*/}
+            <input onChange={(e) => setGeoLatitude(e.currentTarget.value)} value={geoLatitude} />
+            <input onChange={(e) => setGeoLongitude(e.currentTarget.value)} value={geoLongitude} />
             <button onClick={findPlace} type="button">Find Place</button>
             <pre>{JSON.stringify(nominatimResponse, null, 4)}</pre>
 
