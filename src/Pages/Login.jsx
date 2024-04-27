@@ -1,6 +1,7 @@
-import {useState} from "react";
+import React, {useState} from "react";
 import {useRecoilValue, useSetRecoilState} from "recoil";
 import {userState} from "../States/userState";
+import Navigation from "../Templates/Snippets/Navigation";
 
 
 export const Login = () => {
@@ -20,50 +21,53 @@ export const Login = () => {
     const handleLogout = () => setUserState({});
 
     return (
-        <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
-            <div className="card">
-                <div className="card-header">
-                    <h4>LOGIN</h4>
-                </div>
+        <>
+            <Navigation/>
+            <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                <div className="card">
+                    <div className="card-header">
+                        <h4>LOGIN</h4>
+                    </div>
 
-                <p>{userStateData.isLogged ? 'logged ' + userStateData.email : 'not logged'}</p>
+                    <p>{userStateData.isLogged ? 'logged ' + userStateData.email : 'not logged'}</p>
 
-                <div className="card-body">
-                    {!userStateData.isLogged
-                        ?
-                        <form>
-                            <div className="mb-3">
-                                <label htmlFor="email">Email <span className="text-danger">*</span></label>
-                                <input onInput={e => setEmail(e.currentTarget.value)}
-                                       type="text"
-                                       id="email"
-                                       className="form-control mt-2"
-                                       autoFocus
-                                />
-                            </div>
+                    <div className="card-body">
+                        {!userStateData.isLogged
+                            ?
+                            <form>
+                                <div className="mb-3">
+                                    <label htmlFor="email">Email <span className="text-danger">*</span></label>
+                                    <input onInput={e => setEmail(e.currentTarget.value)}
+                                           type="text"
+                                           id="email"
+                                           className="form-control mt-2"
+                                           autoFocus
+                                    />
+                                </div>
 
-                            <div className="mb-3">
-                                <label htmlFor="password">Password <span className="text-danger">*</span></label>
-                                <input onInput={e => setPassword(e.currentTarget.value)}
-                                       type="text"
-                                       id="password"
-                                       className="form-control mt-2"
-                                />
-                            </div>
+                                <div className="mb-3">
+                                    <label htmlFor="password">Password <span className="text-danger">*</span></label>
+                                    <input onInput={e => setPassword(e.currentTarget.value)}
+                                           type="text"
+                                           id="password"
+                                           className="form-control mt-2"
+                                    />
+                                </div>
 
-                            <button onClick={handleSubmit} type="button"
-                                    className="btn btn-primary form-control my-2">Login
-                            </button>
-                        </form>
-                        : <button onClick={handleLogout} type="button"
-                                  className="btn btn-primary form-control my-2">Logout</button>
-                    }
-                </div>
+                                <button onClick={handleSubmit} type="button"
+                                        className="btn btn-primary form-control my-2">Login
+                                </button>
+                            </form>
+                            : <button onClick={handleLogout} type="button"
+                                      className="btn btn-primary form-control my-2">Logout</button>
+                        }
+                    </div>
 
-                <div className="card-footer text-danger">
+                    <div className="card-footer text-danger">
 
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 };

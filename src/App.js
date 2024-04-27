@@ -7,6 +7,7 @@ import Home from "./Pages/Home";
 import Admin from "./Pages/Admin";
 import {RecoilRoot} from "recoil";
 import {Login} from "./Pages/Login";
+import Footer from "./Templates/Snippets/Footer";
 
 const App = () => {
 
@@ -18,6 +19,7 @@ const App = () => {
                     <Route path="/login" element={<Login />} />
                     <Route path="/admin" element={<Admin />} />
                 </Routes>
+                <Footer />
             </BrowserRouter>
         </RecoilRoot>
     );
