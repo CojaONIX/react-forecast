@@ -1,8 +1,10 @@
 import React, {useState} from "react";
-import {useRecoilValue} from "recoil";
-import {userState} from "../States/userState";
 import Navigation from "../Templates/Snippets/Navigation";
 import {Navigate} from "react-router-dom";
+
+import {useRecoilValue, useSetRecoilState} from "recoil";
+import {userState} from "../States/userState";
+import {forecastsState} from "../States/forecastsState";
 
 const Admin = () => {
     const [forecasts, setForecasts] = useState([
@@ -15,7 +17,11 @@ const Admin = () => {
     const [cityMessage, setCityMessage] = useState('');
 
     const userStateData = useRecoilValue(userState);
-    console.log(userStateData);
+
+    const recoilForecasts = useRecoilValue(forecastsState);
+    const setRecoilForecasts = useSetRecoilState(forecastsState);
+
+
 
     const handleCityInput = (e) => {
         setNewForecast({...newForecast, city: e.target.value});
@@ -52,9 +58,12 @@ const Admin = () => {
 
         if(addItem) {
             setForecasts( [...forecasts, newForecast]);
+            setRecoilForecasts(forecasts);
         } else {
             setForecasts(updatedForecast);
+            setRecoilForecasts(forecasts);
         }
+        console.log(recoilForecasts);
 
         setNewForecast({city: '', country: '', temperature: ''});
 

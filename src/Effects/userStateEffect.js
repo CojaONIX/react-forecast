@@ -1,6 +1,6 @@
 
 
-export const localStorageEffects = () => ({setSelf, onSet}) => {
+export const userStateEffect = () => ({setSelf, onSet}) => {
     const saveValues = localStorage.getItem('userData');
 
     if(saveValues !== null) {
