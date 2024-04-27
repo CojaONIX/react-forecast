@@ -29,8 +29,6 @@ export const Login = () => {
                         <h4>LOGIN</h4>
                     </div>
 
-                    <p>{userStateData.isLogged ? 'logged ' + userStateData.email : 'not logged'}</p>
-
                     <div className="card-body">
                         {!userStateData.isLogged
                             ?

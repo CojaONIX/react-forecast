@@ -1,4 +1,4 @@
-import {Container, Nav, Navbar} from "react-bootstrap";
+import {Container, Nav, Navbar, NavDropdown} from "react-bootstrap";
 import {useRecoilValue} from "recoil";
 import {userState} from "../../States/userState";
 
@@ -16,7 +16,10 @@ const Navigation = () => {
                     <Nav className="me-auto my-2 my-lg-0">
                         <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="/admin">Admin</Nav.Link>
-                        <Nav.Link href="/login">Login</Nav.Link>
+                        <NavDropdown title="Old" id="basic-nav-dropdown">
+                            <NavDropdown.Item href="/findplace">Find Place</NavDropdown.Item>
+                            <NavDropdown.Item href="/citiesvalidation">Cities Validation</NavDropdown.Item>
+                        </NavDropdown>
                     </Nav>
 
                     {userStateData.isLogged

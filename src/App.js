@@ -8,6 +8,8 @@ import Admin from "./Pages/Admin";
 import {RecoilRoot} from "recoil";
 import {Login} from "./Pages/Login";
 import Footer from "./Templates/Snippets/Footer";
+import CitiesValidation from "./Old/CitiesValidation";
+import FindPlace from "./Old/FindPlace";
 
 const App = () => {
 
@@ -18,6 +20,8 @@ const App = () => {
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/admin" element={<Admin />} />
+                    <Route path="/citiesvalidation" element={<CitiesValidation />} />
+                    <Route path="/findplace" element={<FindPlace />} />
                 </Routes>
                 <Footer />
             </BrowserRouter>
