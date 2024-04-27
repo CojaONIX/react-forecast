@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {useForm} from "react-hook-form";
 import axios from "axios";
 import Navigation from "../Templates/Snippets/Navigation";
+import HomeForecastsTable from "../Components/HomeForecastsTable";
 
 const Home = () => {
 
@@ -54,8 +55,11 @@ const Home = () => {
     return (
         <>
             <Navigation/>
+
             <div className="container">
                 <h1>Home</h1>
+                <hr/>
+                <HomeForecastsTable/>
                 <hr/>
                 <h4>Latitude: {geoLatitude}</h4>
                 <h4>Longitude: {geoLongitude}</h4>
