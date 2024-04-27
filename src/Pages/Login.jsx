@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import {useState} from "react";
 import {useRecoilValue, useSetRecoilState} from "recoil";
 import {userState} from "../States/userState";
 import Navigation from "../Templates/Snippets/Navigation";
@@ -23,7 +23,7 @@ export const Login = () => {
     return (
         <>
             <Navigation/>
-            <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div className="col-sm-9 col-md-7 col-lg-5 mx-auto" style={{marginBottom: "300px"}} >
                 <div className="card">
                     <div className="card-header">
                         <h4>LOGIN</h4>
@@ -52,17 +52,15 @@ export const Login = () => {
                                     />
                                 </div>
 
-                                <button onClick={handleSubmit} type="button"
-                                        className="btn btn-primary form-control my-2">Login
-                                </button>
+                                <button onClick={handleSubmit} type="button" className="btn btn-primary form-control my-2">Login</button>
                             </form>
-                            : <button onClick={handleLogout} type="button"
-                                      className="btn btn-primary form-control my-2">Logout</button>
+                            : <button onClick={handleLogout} type="button" className="btn btn-primary form-control my-2">Logout</button>
                         }
                     </div>
 
-                    <div className="card-footer text-danger">
-
+                    <div className="card-footer">
+                        <h5>email: admin</h5>
+                        <h5>pass: 123456</h5>
                     </div>
                 </div>
             </div>

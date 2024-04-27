@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import {useState} from "react";
 import Navigation from "../Templates/Snippets/Navigation";
 import {Navigate} from "react-router-dom";
 
@@ -7,21 +7,13 @@ import {userState} from "../States/userState";
 import {forecastsState} from "../States/forecastsState";
 
 const Admin = () => {
-    const [forecasts, setForecasts] = useState([
-        {city: 'Aleksinac', country: 'Srbija', temperature: 22},
-        {city: 'Beograd', country: 'Srbija', temperature: 22},
-        {city: 'London', country: 'England', temperature: 15}
-    ]);
 
     const [newForecast, setNewForecast] = useState({city: '', country: '', temperature: ''});
     const [cityMessage, setCityMessage] = useState('');
 
     const userStateData = useRecoilValue(userState);
-
     const recoilForecasts = useRecoilValue(forecastsState);
     const setRecoilForecasts = useSetRecoilState(forecastsState);
-
-
 
     const handleCityInput = (e) => {
         setNewForecast({...newForecast, city: e.target.value});
@@ -29,11 +21,11 @@ const Admin = () => {
     }
 
     const deleteForecast = (indexToRemove) => {
-        setForecasts(forecasts.filter((_, index) => index !== indexToRemove));
+        setRecoilForecasts(recoilForecasts.filter((_, index) => index !== indexToRemove));
     }
 
     const editForecast = (indexToEdit) => {
-        setNewForecast(forecasts[indexToEdit]);
+        setNewForecast(recoilForecasts[indexToEdit]);
         setCityMessage('');
     }
 
@@ -47,7 +39,7 @@ const Admin = () => {
         const saveItem = (newForecast.city + newForecast.country).toLowerCase();
         let addItem = true;
 
-        const updatedForecast = forecasts.map((item) => {
+        const updatedForecast = recoilForecasts.map((item) => {
             if ((item.city + item.country).toLowerCase() === saveItem) {
                 addItem = false;
                 return newForecast;
@@ -57,11 +49,9 @@ const Admin = () => {
         });
 
         if(addItem) {
-            setForecasts( [...forecasts, newForecast]);
-            setRecoilForecasts(forecasts);
+            setRecoilForecasts([...recoilForecasts, newForecast]);
         } else {
-            setForecasts(updatedForecast);
-            setRecoilForecasts(forecasts);
+            setRecoilForecasts(updatedForecast);
         }
         console.log(recoilForecasts);
 
@@ -89,20 +79,22 @@ const Admin = () => {
                             </thead>
                             <tbody>
                             {
-                                forecasts.map(function (forecast, index) {
-                                    return <tr>
-                                        <td>{forecast.city}</td>
-                                        <td>{forecast.country}</td>
-                                        <td>{forecast.temperature}</td>
-                                        <td>
-                                            <button onClick={() => deleteForecast(index)}
-                                                    className="btn btn-outline-danger mx-3">D
-                                            </button>
-                                            <button onClick={() => editForecast(index)}
-                                                    className="btn btn-outline-primary mx-3">E
-                                            </button>
-                                        </td>
-                                    </tr>
+                                recoilForecasts.map(function (forecast, index) {
+                                    return (
+                                        <tr key={'forecast-' + index}>
+                                            <td>{forecast.city}</td>
+                                            <td>{forecast.country}</td>
+                                            <td>{forecast.temperature}</td>
+                                            <td>
+                                                <button onClick={() => deleteForecast(index)}
+                                                        className="btn btn-outline-danger mx-3">D
+                                                </button>
+                                                <button onClick={() => editForecast(index)}
+                                                        className="btn btn-outline-primary mx-3">E
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    )
                                 })
 
                             }

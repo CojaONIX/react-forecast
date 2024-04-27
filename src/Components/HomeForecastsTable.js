@@ -18,9 +18,9 @@ const HomeForecastsTable = () => {
             </thead>
             <tbody>
             {
-                recoilForecasts.map( (forecast) => {
+                recoilForecasts.map( (forecast, index) => {
                     return (
-                        <tr>
+                        <tr key={'forecast-' + index}>
                             <td>{forecast.city}</td>
                             <td>{forecast.country}</td>
                             <td>{forecast.temperature}</td>
